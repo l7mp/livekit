@@ -830,7 +830,7 @@ func (r *RoomManager) iceServersForParticipant(apiKey string, participant types.
 				err := temporaryAuthForTurn(s, is)
 				if err != nil {
 					logger.Errorw("Temporary auth request failed, falling back to config-read ", err)
-					configAuthRead(s, is)
+					continue
 				}
 			} else {
 				configAuthRead(s, is)
@@ -970,4 +970,5 @@ func configAuthRead(s config.TURNServer, is *livekit.ICEServer) {
 		Username:   s.Username,
 		Credential: s.Credential,
 	}
+
 }
